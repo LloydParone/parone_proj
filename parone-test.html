@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquor Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        #chatbot {
+            display: none;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+        #chatbot-header {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #chatbot-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        #chatbot-input {
+            width: calc(100% - 80px);
+            padding: 10px;
+            border: none;
+        }
+        #chatbot-send {
+            width: 60px;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #chatbot-open-btn {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>11th Street Liquor</h1>
+        <p>Premium Liquor Collection at Your Fingertips</p>
+    </header>
+
+    <nav>
+        <a href="parone-test.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <!-- Vodka Section -->
+    <section id="vodka" class="category-section">
+        <h2>Vodka</h2>
+        <div class="products">
+            <div class="product-item" onclick="openModal('Smirnoff Red Vodka 700ml', 'Premium quality vodka with a smooth finish.', 20, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/s/m/smirnoff_vodka.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/s/m/smirnoff_vodka.png" alt="Smirnoff Red Vodka 700ml">
+                <h3>Smirnoff Red Vodka 700ml</h3>
+                <div class="price">$20</div>
+            </div>
+            <div class="product-item" onclick="openModal('Stoli Citrus Vodka 700ml', 'Smooth citrus-flavored vodka perfect for cocktails.', 25, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/s/t/stolichnaya_-_stoli_citros.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/s/t/stolichnaya_-_stoli_citros.png" alt="Stoli Citrus Vodka 700ml">
+                <h3>Stoli Citrus Vodka 700ml</h3>
+                <div class="price">$25</div>
+            </div>
+            <!-- New Item: Kanto Salted Caramel Vodka -->
+            <div class="product-item" onclick="openModal('Kanto Salted Caramel Vodka 700ml', 'Delicious salted caramel vodka with a smooth finish.', 30, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/k/a/kanto_salted_caramel_vodka_600x.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/k/a/kanto_salted_caramel_vodka_600x.png" alt="Kanto Salted Caramel Vodka 700ml">
+                <h3>Kanto Salted Caramel Vodka 700ml</h3>
+                <div class="price">$30</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beer Section -->
+    <section id="beer" class="category-section">
+        <h2>Beer</h2>
+        <div class="products">
+            <div class="product-item" onclick="openModal('Heineken Silver Beer 330ml', 'Refreshing beer with a clean taste, perfect for all occasions.', 30, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/h/e/heineken_silver_330ml_bottle_case_x48.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/h/e/heineken_silver_330ml_bottle_case_x48.png" alt="Heineken Silver Beer 330ml">
+                <h3>Heineken Silver Beer 330ml</h3>
+                <div class="price">$30</div>
+            </div>
+            <div class="product-item" onclick="openModal('Engkanto Hop Coolture Pale Ale 330ml', 'Unique pale ale with a crisp, hoppy taste.', 18, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/h/o/hop_coolture_pale_ale_series_2.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/h/o/hop_coolture_pale_ale_series_2.png" alt="Engkanto Hop Coolture Pale Ale 330ml">
+                <h3>Engkanto Hop Coolture Pale Ale 330ml</h3>
+                <div class="price">$18</div>
+            </div>
+            <!-- New Item: Beck's Beer with Tumbler Glass -->
+            <div class="product-item" onclick="openModal('Buy 1 Take 1 Case: Beck\'s Beer Bottle 275ml x24', 'Buy 1 Take 1 Case of Beck\'s Beer Bottle 275ml x24 (Total 2 Cases) with FREE Beck\'s 330ml Tumbler Glass.', 50, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/b/e/becks_btl_x48_w_tumblr_glass_v2_1.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/b/e/becks_btl_x48_w_tumblr_glass_v2_1.png" alt="Beck's Beer Bottle 275ml x24">
+                <h3>Beck's Beer Bottle 275ml x24 (Buy 1 Take 1)</h3>
+                <div class="price">$50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Whiskey Section -->
+    <section id="whiskey" class="category-section">
+        <h2>Whiskey</h2>
+        <div class="products">
+            <div class="product-item" onclick="openModal('Macallan 12YO Sherry Oak 700ml', 'Rich, full-bodied whiskey with smooth sherry oak finish.', 90, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/m/a/macallan12yosherryoak700ml.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/m/a/macallan12yosherryoak700ml.png" alt="Macallan 12YO Sherry Oak 700ml">
+                <h3>Macallan 12YO Sherry Oak 700ml</h3>
+                <div class="price">$90</div>
+            </div>
+            <div class="product-item" onclick="openModal('Ballantine’s 7YO Bourbon Cask Finish 700ml', 'A smooth, rich flavor with a touch of caramel.', 50, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/b/a/ballantines-7-year-old-700ml.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/b/a/ballantines-7-year-old-700ml.png" alt="Ballantine’s 7YO Bourbon Cask Finish 700ml">
+                <h3>Ballantine’s 7YO Bourbon Cask Finish 700ml</h3>
+                <div class="price">$50</div>
+            </div>
+            <!-- New Item: Aerolite Lyndsay 10 Year Old Whiskey -->
+            <div class="product-item" onclick="openModal('Aerolite Lyndsay 10 Year Old 700ml', 'A complex and rich whiskey with a smooth finish.', 60, 'https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/a/e/aerolite-lyndsay-10-year-old.png')">
+                <img src="https://boozeshop.ph/pub/media/catalog/product/cache/6f78ceed2ded4343fc044eeb4cc87722/a/e/aerolite-lyndsay-10-year-old.png" alt="Aerolite Lyndsay 10 Year Old 700ml">
+                <h3>Aerolite Lyndsay 10 Year Old 700ml</h3>
+                <div class="price">$60</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Product Details -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Title</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <img id="modalImage" src="" alt="Product Image">
+            <p id="modalDescription"></p>
+            <div class="price" id="modalPrice"></div>
+
+            <!-- Quantity Selector -->
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1" />
+
+            <button onclick="addToCartFromModal()">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Fetch cart from localStorage or initialize an empty cart
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Add item to cart
+        function addToCart(item, price, quantity) {
+            let existingItem = cart.find(cartItem => cartItem.item === item);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;  // Increase the existing quantity
+            } else {
+                cart.push({ item, price, quantity });
+            }
+
+            // Save cart to localStorage
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        // Add item from modal to cart
+        function addToCartFromModal() {
+            const item = document.getElementById('modalTitle').textContent;
+            const price = parseFloat(document.getElementById('modalPrice').textContent.slice(1));
+            const quantity = parseInt(document.getElementById('quantity').value, 10);  // Get quantity from input field
+
+            if (quantity > 0) {
+                addToCart(item, price, quantity);
+                closeModal();
+            } else {
+                alert("Please enter a valid quantity.");
+            }
+        }
+
+        // Open modal with product details
+        function openModal(title, description, price, imageUrl) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('modalPrice').textContent = `$${price}`;
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+    </script>
+
+<div id="chatbot-container">
+    <div id="chatbot">
+        <div id="chatbot-header">
+            <h4>How can we help you?</h4>
+            <span onclick="closeChatbot()" style="cursor:pointer;">×</span>
+        </div>
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Type your message...">
+        <button id="chatbot-send" onclick="sendMessage()">Send</button>
+    </div>
+    <button id="chatbot-open-btn" onclick="openChatbot()">Chat</button>
+</div>
+
+<script>
+    function openChatbot() {
+        document.getElementById("chatbot").style.display = "block";
+        document.getElementById("chatbot-open-btn").style.display = "none";
+        const messagesDiv = document.getElementById("chatbot-messages");
+        messagesDiv.innerHTML = `<div><strong>Bot:</strong> Welcome! You can ask about product recommendations, taste descriptions, pricing, and more. Here are some ideas:
+        <br>- "What vodka do you recommend?" <br>
+        - "Describe the taste of whiskey." <br>
+        - "Tell me about the price of whiskey." <br>
+        - "What are your best-selling drinks?" <br>
+        - "Give me cocktail recipe suggestions!" <br>
+        - "How are you?" <br>
+        - "Can I get some help?"</div>`;
+    }
+
+    function closeChatbot() {
+        document.getElementById("chatbot").style.display = "none";
+        document.getElementById("chatbot-open-btn").style.display = "block";
+    }
+
+    function sendMessage() {
+        const input = document.getElementById("chatbot-input").value;
+        const messagesDiv = document.getElementById("chatbot-messages");
+        if (input.trim()) {
+            messagesDiv.innerHTML += `<div><strong>You:</strong> ${input}</div>`;
+            document.getElementById("chatbot-input").value = "";
+
+            setTimeout(() => {
+                const lowerInput = input.toLowerCase();
+                if (lowerInput.includes('recommend') || lowerInput.includes('suggest')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I recommend trying our Smirnoff Red Vodka. It's smooth, versatile, and perfect for cocktails! Would you like to hear about whiskey or other vodka options?</div>`;
+                } else if (lowerInput.includes('taste') || lowerInput.includes('flavor')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Smirnoff Red Vodka has a clean, smooth finish with subtle notes of grain. Would you like to know more about our whiskey selection as well?</div>`;
+                } else if (lowerInput.includes('price') || lowerInput.includes('cost')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Our Smirnoff Red Vodka is priced at $18.99 for a 750ml bottle. Interested in learning about the price of other products?</div>`;
+                } else if (lowerInput.includes('personal info') || lowerInput.includes('privacy')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> We prioritize your privacy and do not collect personal information. How else may I assist you today?</div>`;
+                } else if (lowerInput.includes('whiskey') || lowerInput.includes('scotch')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Our Glenfiddich 12 Year Old Scotch offers a rich, fruity aroma with hints of pear and oak. Would you like me to suggest a cocktail recipe?</div>`;
+                } else if (lowerInput.includes('wine')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> We have a selection of red and white wines, including a full-bodied Cabernet Sauvignon with notes of dark fruit and a crisp Chardonnay with hints of citrus.</div>`;
+                } else if (lowerInput.includes('cocktail') || lowerInput.includes('recipe')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> How about a classic Moscow Mule? You'll need vodka, ginger beer, and lime juice. Would you like more cocktail ideas?</div>`;
+                } else if (lowerInput.includes('how are you') || lowerInput.includes('how are you doing')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I'm doing great, thank you for asking! How about you? How can I assist you today?</div>`;
+                } else if (lowerInput.includes('are you okay') || lowerInput.includes('are you doing okay')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I'm functioning as usual, thank you for checking! What can I help you with?</div>`;
+                } else if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Hello! How can I assist you today? Feel free to ask me about products, prices, or anything else!</div>`;
+                } else if (lowerInput.includes('goodbye') || lowerInput.includes('bye')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Goodbye! It was nice chatting with you. Come back anytime if you need help!</div>`;
+                } else if (lowerInput.includes('thank you') || lowerInput.includes('thanks')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> You're welcome! I'm always here to help. Let me know if you need anything else!</div>`;
+                } else if (lowerInput.includes('what is your name') || lowerInput.includes('who are you')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I’m your friendly chatbot assistant. I’m here to help you with all your drink and product inquiries!</div>`;
+                } else if (lowerInput.includes('how old are you')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I’m timeless, just like a good whiskey! 😄</div>`;
+                } else if (lowerInput.includes('are you real')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Well, I’m real in the digital sense, but not quite like you! 😁</div>`;
+                } else if (lowerInput.includes('joke') || lowerInput.includes('funny')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Here’s a joke for you: Why don't skeletons fight each other? They don't have the guts! 😆</div>`;
+                } else if (lowerInput.includes('love') || lowerInput.includes('like')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Aw, thanks for the love! I’m here to make your day easier and more fun! 😊</div>`;
+                } else if (lowerInput.includes('help') || lowerInput.includes('assist')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I'm here to help! What can I assist you with today? Products, prices, or something else?</div>`;
+                } else if (lowerInput.includes('good morning')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Good morning! Ready to start your day with some delicious drink recommendations? 😊</div>`;
+                } else if (lowerInput.includes('good night')) {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> Good night! Sleep well and feel free to come back anytime for more chat! 😴</div>`;
+                } else {
+                    messagesDiv.innerHTML += `<div><strong>Bot:</strong> I'm here to help with product recommendations, taste descriptions, pricing, and more! Feel free to ask any questions.</div>`;
+                }
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+        }
+    }
+</script>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 Liquor Shop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

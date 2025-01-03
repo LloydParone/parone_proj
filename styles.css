@@ -1,0 +1,468 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #8B4513;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    background-image: url('https://img.freepik.com/free-photo/close-up-tasty-beverage-with-copy-space_23-2148436982.jpg?t=st=1735916741~exp=1735920341~hmac=734b6d211c0593d95162ea7711da4d04d73fd8abe5fa7a9396fa3c938f9040fa&w=1060');
+    background-size: cover;
+    background-position: center;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Navigation Styling */
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #333;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #8B4513;
+}
+
+/* Category Section */
+.category-section {
+    margin-bottom: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #8B4513; /* Match the theme color */
+}
+
+/* Category Items (Vodka, Beer, Whiskey, etc.) */
+.category-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.category-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.category-item h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.category-item button {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.category-item button:hover {
+    background-color: #7a3e1a;
+}
+
+/* Product Section */
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.product-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    margin: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-item h3 {
+    margin: 15px 0;
+}
+
+.product-item .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 15px;
+}
+
+.product-item button {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.product-item button:hover {
+    background-color: #7a3e1a;
+}
+
+/* Cart Section */
+#cart {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+#cart h2 {
+    text-align: center;
+}
+
+#cart-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#cart-table th,
+#cart-table td {
+    text-align: left;
+    padding: 10px;
+}
+
+#cart-table th {
+    background-color: #8B4513;
+    color: white;
+}
+
+#cart-table td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Cart - Total Price */
+.total {
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Cart - Remove Button */
+button.remove-btn {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Cart - Quantity Controls */
+.cart-quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-quantity-controls button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-quantity-controls button:hover {
+    background-color: #ddd;
+}
+
+.cart-quantity-controls input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Checkout Button */
+#checkoutBtn {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#checkoutBtn:hover {
+    background-color: #7a3e1a;
+}
+
+/* Checkout Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Checkout Form Styling */
+#checkoutForm label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#checkoutForm input,
+#checkoutForm textarea,
+#checkoutForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#checkoutForm button {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+#checkoutForm button:hover {
+    background-color: #7a3e1a;
+}
+
+#checkoutForm .close {
+    background-color: #dc3545;
+    margin-top: 10px;
+}
+
+/* About Section Styling */
+#about {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+    line-height: 1.6;
+}
+
+#about h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 20px;
+}
+
+#about h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8B4513;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#about p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#about ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+#about li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#about a {
+    color: #8B4513;
+    text-decoration: none;
+}
+
+#about a:hover {
+    color: #7a3e1a;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #8B4513;
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-container a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-container a:hover {
+    color: #f0a500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-item {
+        width: 90%;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .cart-quantity-controls {
+        flex-direction: column;
+    }
+
+    .cart-quantity-controls button {
+        width: 30px;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    #about h2 {
+        font-size: 24px;
+    }
+
+    #about h3 {
+        font-size: 20px;
+    }
+
+    #about p, #about li {
+        font-size: 14px;
+    }
+    
+    .footer-container p {
+        font-size: 12px;
+    }
+}
